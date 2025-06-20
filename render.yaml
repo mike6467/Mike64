@@ -2,8 +2,9 @@ services:
   - type: web
     name: pi-wallet-clone
     env: python
-    buildCommand: ""
-    startCommand: python app.py
+    region: oregon  # or change to your closest region
+    buildCommand: pip install -r requirements.txt
+    startCommand: gunicorn app:app
     envVars:
       - key: SUPABASE_URL
         value: https://mtdoujhsnazarnemlqze.supabase.co
