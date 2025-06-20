@@ -1,0 +1,11 @@
+services:
+  - type: web
+    name: pi-wallet-clone
+    env: python
+    buildCommand: ""
+    startCommand: python app.py
+    envVars:
+      - key: SUPABASE_URL
+        value: https://mtdoujhsnazarnemlqze.supabase.co
+      - key: SUPABASE_KEY
+        value: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im10ZG91amhzbmF6YXJuZW1scXplIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTA0NTQ4MjYsImV4cCI6MjA2NjAzMDgyNn0.8w4_bMXJ_gsrPmaPB7P-Vea7Kl2yePag_UhhDqe_SmE
