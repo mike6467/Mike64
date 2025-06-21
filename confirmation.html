@@ -87,6 +87,25 @@
       height: auto;
     }
 
+    .btn {
+      margin-top: 40px;
+      padding: 18px 36px;
+      font-size: 1.5rem;
+      background-color: #7b2cbf;
+      color: white;
+      border: none;
+      border-radius: 12px;
+      cursor: not-allowed;
+      opacity: 0.9;
+      box-shadow: 0 0 15px rgba(123, 44, 191, 0.7);
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .btn:hover {
+      transform: scale(1.02);
+      box-shadow: 0 0 20px rgba(123, 44, 191, 0.9);
+    }
+
     @media (max-width: 768px) {
       h1 {
         font-size: 2.2rem;
@@ -98,6 +117,11 @@
 
       .scroll-heading {
         font-size: 1.1rem;
+      }
+
+      .btn {
+        font-size: 1.2rem;
+        padding: 14px 28px;
       }
     }
   </style>
@@ -118,8 +142,10 @@
       </div>
     </div>
 
-    <div class="live-price" id="livePrice"></div>
+    <div class="live-price" id="livePrice">LIVE PRICE: $314.159</div>
     <canvas id="chart" width="1000" height="450"></canvas>
+
+    <button class="btn" disabled>GO TO DASHBOARD</button>
   </div>
 
   <script>
@@ -181,7 +207,7 @@
         const bodyHeight = Math.abs(closeY - openY);
         ctx.fillRect(x, Math.min(openY, closeY), candleWidth - 2, Math.max(bodyHeight, 1));
 
-        // Price label on last candle
+        // Label last candle price
         if (i === visibleCandles.length - 1) {
           ctx.fillStyle = "#ffffff";
           ctx.font = "bold 14px Segoe UI";
